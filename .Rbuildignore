@@ -1,0 +1,6 @@
+^README\.Rmd$
+^README\.html$
+^\.Rproj\.user$
+^.*\.Rproj$
+^\.DS_Store$
+^man/figures/README-.*$

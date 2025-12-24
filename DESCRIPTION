@@ -1,0 +1,33 @@
+Package: railwayJP
+Title: Plot Japanese Railway Routes Using Government Open Data
+Version: 0.1.0
+Authors@R:
+    person("Soichiro", "", email = "soichiro@example.com", role = c("aut", "cre"))
+Description: Plot railway routes across Japan using the National Land Numerical
+    Information (Kokudo Suuchi Jouhou) railway dataset from the Ministry of Land,
+    Infrastructure, Transport and Tourism (MLIT). Features include graph-based
+    routing between stations, support for specifying intermediate stops (via points),
+    automatic operator corporate colors, and customizable map output.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.0.0)
+Imports:
+    sf,
+    ggplot2,
+    dplyr,
+    rnaturalearth,
+    rnaturalearthdata,
+    rappdirs,
+    rlang,
+    stats,
+    utils
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+URL: https://github.com/soichiro/railwayJP
+BugReports: https://github.com/soichiro/railwayJP/issues
