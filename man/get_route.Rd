@@ -2,7 +2,7 @@
 % Please edit documentation in R/graph.R
 \name{get_route}
 \alias{get_route}
-\title{Get route sections between two stations}
+\title{Get route between stations}
 \usage{
 get_route(segments, verbose = TRUE)
 }
@@ -22,23 +22,8 @@ name or a character vector for routes spanning multiple operators
 }}
 
 \item{verbose}{If TRUE (default), print route details}
-
-\item{from_station}{Start station name}
-
-\item{to_station}{End station name}
-
-\item{via}{Character vector of intermediate station names (optional)}
-
-\item{use_railroad}{sf object with railway sections (if NULL, uses package data)}
-
-\item{use_stations}{sf object with stations (if NULL, uses package data)}
 }
 \value{
-A list with:
-\item{sections}{sf object with the railway sections}
-\item{stations}{sf object with stations along the route}
-\item{route}{Character vector with station names in order}
-
 A list of route results, one per segment. Each result contains:
 \item{label}{Segment label}
 \item{start}{Start station name}
@@ -53,23 +38,11 @@ A list of route results, one per segment. Each result contains:
 \item{stations_sf}{sf object with stations (for advanced use)}
 }
 \description{
-Finds the railway sections connecting two stations, optionally passing
-through intermediate stations (via points).
-}
-\examples{
-\dontrun{
-# Simple route
-route <- get_route_sections("東京", "横浜")
-
-# Route with intermediate stops (via points)
-route <- get_route_sections("新宿", "長野", via = c("松本"))
-}
-Get route between stations
-
 Finds railway routes for one or more segments, with optional filtering by
 line name or operator. This is useful for verifying routes before plotting.
-Uses the same segment specification as `plot_railway_segments()`.
-
+Uses the same segment specification as \code{plot_railway_segments()}.
+}
+\examples{
 \dontrun{
 # Single segment
 get_route(list(

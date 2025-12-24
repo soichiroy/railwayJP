@@ -237,34 +237,6 @@ get_stations_along_path <- function(
   result
 }
 
-#' Get route sections between two stations
-#'
-#' Finds the railway sections connecting two stations, optionally passing
-#' through intermediate stations (via points).
-#'
-#' @param from_station Start station name
-#' @param to_station End station name
-#' @param via Character vector of intermediate station names (optional)
-#' @param use_railroad sf object with railway sections (if NULL, uses package data)
-#' @param use_stations sf object with stations (if NULL, uses package data)
-#' @param verbose If TRUE, print progress messages
-#'
-#' @return A list with:
-#'   \item{sections}{sf object with the railway sections}
-#'   \item{stations}{sf object with stations along the route}
-#'   \item{route}{Character vector with station names in order}
-#'
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#' # Simple route
-#' route <- get_route_sections("東京", "横浜")
-#'
-#' # Route with intermediate stops (via points)
-#' route <- get_route_sections("新宿", "長野", via = c("松本"))
-#' }
-
 #' Get route between stations
 #'
 #' Finds railway routes for one or more segments, with optional filtering by
@@ -440,6 +412,33 @@ get_route <- function(segments, verbose = TRUE) {
   results
 }
 
+#' Get route sections between two stations
+#'
+#' Finds the railway sections connecting two stations, optionally passing
+#' through intermediate stations (via points).
+#'
+#' @param from_station Start station name
+#' @param to_station End station name
+#' @param via Character vector of intermediate station names (optional)
+#' @param use_railroad sf object with railway sections (if NULL, uses package data)
+#' @param use_stations sf object with stations (if NULL, uses package data)
+#' @param verbose If TRUE, print progress messages
+#'
+#' @return A list with:
+#'   \item{sections}{sf object with the railway sections}
+#'   \item{stations}{sf object with stations along the route}
+#'   \item{route}{Character vector with station names in order}
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Simple route
+#' route <- get_route_sections("東京", "横浜")
+#'
+#' # Route with intermediate stops (via points)
+#' route <- get_route_sections("新宿", "長野", via = c("松本"))
+#' }
 get_route_sections <- function(
   from_station,
   to_station,
