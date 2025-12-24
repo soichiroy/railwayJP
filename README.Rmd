@@ -149,6 +149,39 @@ plot_railway_segments(
 
 ![Multiple independent routes](man/figures/multiple_routes.png)
 
+#### Tips: Visualizing a long route across multiple operators
+
+When visualizing a long route that spans multiple operators,
+you can approximate the route by specifying intermediate stops
+using the `via` argument.
+
+For example, back in 2007 I took a train from 京都 to 新潟 via the 北陸本線,
+which was solely operated by JR at the time.
+Visualizing this route is tricky because it is now operated by multiple third-party companies.
+
+```{r approximate-long-routes, eval = TRUE}
+plot_railway_segments(
+  segments = list(
+    list(
+      start = "京都",
+      end = "直江津",
+      via = c("比叡山坂本", "敦賀", "福井", "金沢", "富山", "黒部", "糸魚川"),
+      label = "湖西線・旧北陸本線"
+    )
+  ),
+  title = "湖西線・旧北陸本線",
+  key_stations = c("京都", "敦賀", "福井", "金沢", "富山", "糸魚川", "直江津"),
+  show_legend = TRUE,
+  output_file = "man/figures/hokuriku_line.png",
+  dpi = 300
+)
+```
+
+![](man/figures/hokuriku_line.png)
+
+While the detected route is not perfect, the visual line on the map 
+captures key topological features of the route.
+
 ## Segment Options
 
 Each segment in the `segments` list can have the following options:

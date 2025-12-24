@@ -253,6 +253,67 @@ alt="Multiple independent routes" />
 <figcaption aria-hidden="true">Multiple independent routes</figcaption>
 </figure>
 
+#### Tips: Visualizing a long route across multiple operators
+
+When visualizing a long route that spans multiple operators, you can
+approximate the route by specifying intermediate stops using the `via`
+argument.
+
+For example, back in 2007 I took a train from 京都 to 新潟 via the
+北陸本線, which was solely operated by JR at the time. Visualizing this
+route is tricky because it is now operated by multiple third-party
+companies.
+
+``` r
+plot_railway_segments(
+  segments = list(
+    list(
+      start = "京都",
+      end = "直江津",
+      via = c("比叡山坂本", "敦賀", "福井", "金沢", "富山", "黒部", "糸魚川"),
+      label = "湖西線・旧北陸本線"
+    )
+  ),
+  title = "湖西線・旧北陸本線",
+  key_stations = c("京都", "敦賀", "福井", "金沢", "富山", "糸魚川", "直江津"),
+  show_legend = TRUE,
+  output_file = "man/figures/hokuriku_line.png",
+  dpi = 300
+)
+#> 
+#> Processing segment 1 : All lines 京都 -> 直江津
+#>   Using 21916 sections, 10220 station records
+#>   Building track graph...
+#>     Nodes: 20608 Sections: 21916
+#>   Waypoints: 京都 -> 比叡山坂本 -> 敦賀 -> 福井 -> 金沢 -> 富山 -> 黒部 -> 糸魚川 -> 直江津
+#>   Finding path from 京都 to 比叡山坂本 ...
+#>     Found 10 sections
+#>   Finding path from 比叡山坂本 to 敦賀 ...
+#>     Found 46 sections
+#>   Finding path from 敦賀 to 福井 ...
+#>     Found 24 sections
+#>   Finding path from 福井 to 金沢 ...
+#>     Found 39 sections
+#>   Finding path from 金沢 to 富山 ...
+#>     Found 3 sections
+#>   Finding path from 富山 to 黒部 ...
+#>     Found 13 sections
+#>   Finding path from 黒部 to 糸魚川 ...
+#>     Found 19 sections
+#>   Finding path from 糸魚川 to 直江津 ...
+#>     Found 20 sections
+#>   Total path sections: 174
+#>   Route: 京都 -> 京阪山科 -> 山科 -> 四宮 -> 京阪大津京 -> 大津京 -> 滋賀里 -> 唐崎 -> 比叡山坂本 -> おごと温泉 -> 堅田 -> 小野 -> 和邇 -> 蓬莱 -> 志賀 -> 比良 -> 近江舞子 -> 北小松 -> 近江高島 -> 安曇川 -> 新旭 -> 近江今津 -> 近江中庄 -> マキノ -> 永原 -> 近江塩津 -> 新疋田 -> 敦賀 -> 南今庄 -> 今庄 -> 湯尾 -> 南条 -> 王子保 -> 武生 -> 越前武生 -> スポーツ公園 -> 家久 -> 鯖江 -> 北鯖江 -> 大土呂 -> 越前花堂 -> 花堂 -> 赤十字前 -> 商工会議所前 -> 福井駅 -> 福井 -> 新福井 -> 福井口 -> 森田 -> 春江 -> 丸岡 -> 芦原温泉 -> 細呂木 -> 牛ノ谷 -> 大聖寺 -> 加賀温泉 -> 動橋 -> 粟津 -> 小松 -> 明峰 -> 能美根上 -> 小舞子 -> 美川 -> 加賀笠間 -> 松任 -> 野々市 -> 西金沢 -> 新西金沢 -> 金沢 -> 北鉄金沢 -> 七ツ屋 -> 東金沢 -> 森本 -> 石動 -> 新高岡 -> 呉羽 -> 電鉄富山駅・エスタ前 -> 富山駅 -> 富山 -> オークスカナルパークホテル富山前 -> 新富山口 -> 東富山 -> 水橋 -> 西滑川 -> 中滑川 -> 滑川 -> 浜加積 -> 早月加積 -> 東滑川 -> 越中中村 -> 西魚津 -> 電鉄魚津 -> 魚津 -> 新魚津 -> 黒部 -> 生地 -> 西入善 -> 入善 -> 泊 -> 越中宮崎 -> 市振 -> 親不知 -> 青海 -> 糸魚川 -> えちご押上ひすい海岸 -> 梶屋敷 -> 浦本 -> 能生 -> 筒石 -> 名立 -> 有間川 -> 谷浜 -> 直江津
+#>   Result: 174 sections, 113 stations
+#> 
+#> Map saved to man/figures/hokuriku_line.png
+```
+
+![](man/figures/hokuriku_line.png)
+
+While the detected route is not perfect, the visual line on the map
+captures key topological features of the route.
+
 ## Segment Options
 
 Each segment in the `segments` list can have the following options:
