@@ -15,7 +15,7 @@ Ministry of Land, Infrastructure, Transport and Tourism (MLIT).
 
 ``` r
 # Install from GitHub
-# devtools::install_github("soichiro/railwayJP")
+# devtools::install_github("soichiroy/railwayJP")
 ```
 
 ## Quick Start

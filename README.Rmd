@@ -27,7 +27,7 @@ It uses the National Land Numerical Information (Railway Data) from the Ministry
 
 ```{r installation, eval = FALSE}
 # Install from GitHub
-# devtools::install_github("soichiro/railwayJP")
+# devtools::install_github("soichiroy/railwayJP")
 ```
 
 ## Quick Start
