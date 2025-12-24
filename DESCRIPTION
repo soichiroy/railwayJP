@@ -19,6 +19,7 @@ Imports:
     sf,
     ggplot2,
     dplyr,
+    jsonlite,
     rnaturalearth,
     rnaturalearthdata,
     rappdirs,

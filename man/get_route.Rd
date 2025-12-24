@@ -14,7 +14,9 @@ get_route(segments, verbose = TRUE)
 \item{via}{Character vector of intermediate station names (optional)}
 \item{line}{Line name(s) to filter by (optional). Can be a single name or
 a character vector for routes spanning multiple lines.
-Use \code{search_lines()} to find names.}
+Marketing line names (e.g., "瀬戸大橋線", "JR京都線") are automatically
+expanded to infrastructure line names. Use \code{list_line_aliases()} to see
+available aliases, or \code{search_lines()} to find infrastructure line names.}
 \item{operator}{Operator name(s) to filter by (optional). Can be a single
 name or a character vector for routes spanning multiple operators
 (e.g., \code{c("四国旅客鉄道", "西日本旅客鉄道")} for JR Shikoku + JR West).}
@@ -70,6 +72,16 @@ get_route(list(
     start = "松山",
     end = "岡山",
     operator = c("四国旅客鉄道", "西日本旅客鉄道")
+  )
+))
+
+# Using marketing line name (automatically expanded to infrastructure lines)
+# 瀬戸大橋線 -> 宇野線 + 本四備讃線 + 予讃線
+get_route(list(
+  list(
+    start = "松山",
+    end = "岡山",
+    line = "瀬戸大橋線"
   )
 ))
 }

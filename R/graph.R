@@ -250,7 +250,9 @@ get_stations_along_path <- function(
 #'     \item{via}{Character vector of intermediate station names (optional)}
 #'     \item{line}{Line name(s) to filter by (optional). Can be a single name or
 #'       a character vector for routes spanning multiple lines.
-#'       Use `search_lines()` to find names.}
+#'       Marketing line names (e.g., "瀬戸大橋線", "JR京都線") are automatically
+#'       expanded to infrastructure line names. Use `list_line_aliases()` to see
+#'       available aliases, or `search_lines()` to find infrastructure line names.}
 #'     \item{operator}{Operator name(s) to filter by (optional). Can be a single
 #'       name or a character vector for routes spanning multiple operators
 #'       (e.g., `c("四国旅客鉄道", "西日本旅客鉄道")` for JR Shikoku + JR West).}
@@ -303,6 +305,16 @@ get_stations_along_path <- function(
 #'     operator = c("四国旅客鉄道", "西日本旅客鉄道")
 #'   )
 #' ))
+#'
+#' # Using marketing line name (automatically expanded to infrastructure lines)
+#' # 瀬戸大橋線 -> 宇野線 + 本四備讃線 + 予讃線
+#' get_route(list(
+#'   list(
+#'     start = "松山",
+#'     end = "岡山",
+#'     line = "瀬戸大橋線"
+#'   )
+#' ))
 #' }
 get_route <- function(segments, verbose = TRUE) {
   railroad_data <- get_railroad_data()
@@ -335,9 +347,12 @@ get_route <- function(segments, verbose = TRUE) {
     use_railroad <- railroad_data
     use_stations <- station_data
 
-    if (!is.null(seg$line)) {
-      use_railroad <- use_railroad[use_railroad$N02_003 %in% seg$line, ]
-      use_stations <- use_stations[use_stations$N02_003 %in% seg$line, ]
+    # Expand line aliases (e.g., 瀬戸大橋線 -> 宇野線 + 本四備讃線 + 予讃線)
+    expanded_lines <- expand_line_filter(seg$line)
+
+    if (!is.null(expanded_lines)) {
+      use_railroad <- use_railroad[use_railroad$N02_003 %in% expanded_lines, ]
+      use_stations <- use_stations[use_stations$N02_003 %in% expanded_lines, ]
     }
 
     if (!is.null(seg$operator)) {
@@ -354,7 +369,12 @@ get_route <- function(segments, verbose = TRUE) {
 
     if (verbose) {
       filter_desc <- if (!is.null(seg$line)) {
-        paste(seg$line, collapse = ", ")
+        original <- paste(seg$line, collapse = ", ")
+        if (!identical(seg$line, expanded_lines)) {
+          paste0(original, " -> ", paste(expanded_lines, collapse = ", "))
+        } else {
+          original
+        }
       } else {
         "All lines"
       }
