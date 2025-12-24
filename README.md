@@ -11,6 +11,14 @@ Japan.
 It uses the National Land Numerical Information (Railway Data) from the
 Ministry of Land, Infrastructure, Transport and Tourism (MLIT).
 
+## Web Application
+
+A web-based version of this tool is available at:
+**<https://soichiroy.github.io/railwayJP-web/>**
+
+> **Note**: The web application is currently in development. Some
+> features may be incomplete or subject to change.
+
 ## Installation
 
 ``` r
