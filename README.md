@@ -42,7 +42,8 @@ plot_railway_segments(
     "高松", "坂出", "宇多津", "丸亀", "多度津", "観音寺", "川之江", "伊予三島", "新居浜",
     "伊予西条", "壬生川", "今治", "伊予北条", "松山"
   ),
-  output_file = "man/figures/matsuyama_takamatsu.png"
+  output_file = "man/figures/matsuyama_takamatsu.png",
+  dpi = 300
 )
 #> Loading railway data...
 #> Data loaded: 21916 railroad sections, 10220 stations
@@ -140,7 +141,8 @@ plot_railway_segments(
   title = "Railway Routes",
   key_stations = c("新宿", "松本", "長野"),
   show_legend = TRUE,
-  output_file = "man/figures/railway_routes.png"
+  output_file = "man/figures/railway_routes.png",
+  dpi = 300
 )
 #> 
 #> Processing segment 1 : All lines 新宿 -> 長野
@@ -199,7 +201,8 @@ plot_railway_segments(
   title = "Multiple Independent Routes",
   key_stations = c("松山", "岡山", "新神戸", "名古屋", "高山", "富山"),
   show_legend = TRUE,
-  output_file = "man/figures/multiple_routes.png"
+  output_file = "man/figures/multiple_routes.png",
+  dpi = 300
 )
 #> 
 #> Processing segment 1 : All lines 松山 -> 岡山
@@ -287,7 +290,7 @@ search_lines("東海道")
 | `show_legend`       | TRUE              | Show route legend                 |
 | `width`             | 14                | Plot width (inches)               |
 | `height`            | 10                | Plot height (inches)              |
-| `dpi`               | 150               | Output resolution                 |
+| `dpi`               | 300               | Output resolution                 |
 
 ## Utility Functions
 

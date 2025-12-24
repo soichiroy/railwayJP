@@ -25,7 +25,7 @@
 #' @param show_legend If TRUE, show route legend
 #' @param width Plot width in inches
 #' @param height Plot height in inches
-#' @param dpi Output resolution
+#' @param dpi Output resolution (default: 300)
 #' @param padding_x Horizontal padding around routes (in degrees)
 #' @param padding_y Vertical padding around routes (in degrees)
 #'
@@ -73,7 +73,7 @@ plot_railway_segments <- function(
   show_legend = TRUE,
   width = 14,
   height = 10,
-  dpi = 150,
+  dpi = 300,
   padding_x = 0.5,
   padding_y = 0.3
 ) {
