@@ -188,7 +188,7 @@ plot_railway_segments(
       start = "松山",
       end = "岡山",
       via = "児島",
-      label = "予讃線・本四備讃線",
+      label = "予讃線・瀬戸大橋線",
       operator = c("四国旅客鉄道", "西日本旅客鉄道")
     ),
     list(

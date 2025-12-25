@@ -261,7 +261,7 @@ plot_railway_segments <- function(
     ggplot2::geom_sf_text(
       data = pref_centroids,
       ggplot2::aes(label = .data$name_ja),
-      size = 3,
+      size = 3.5,
       color = "#666666",
       fontface = "bold",
       alpha = 0.7
@@ -290,7 +290,7 @@ plot_railway_segments <- function(
       ggplot2::geom_sf_label(
         data = highlight_stations,
         ggplot2::aes(label = .data$N02_005),
-        size = 2.8,
+        size = 3.3,
         nudge_y = 0.04,
         label.padding = ggplot2::unit(0.15, "lines"),
         alpha = 0.9
