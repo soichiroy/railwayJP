@@ -51,6 +51,8 @@ plot_railway_segments(
     "伊予西条", "壬生川", "今治", "伊予北条", "松山"
   ),
   output_file = "man/figures/matsuyama_takamatsu.png",
+  width = 10,
+  height = 7,
   dpi = 300
 )
 #> Loading railway data...
@@ -150,6 +152,8 @@ plot_railway_segments(
   key_stations = c("新宿", "松本", "長野"),
   show_legend = TRUE,
   output_file = "man/figures/railway_routes.png",
+  width = 10,
+  height = 7,
   dpi = 300
 )
 #> 
@@ -210,6 +214,8 @@ plot_railway_segments(
   key_stations = c("松山", "岡山", "新神戸", "名古屋", "高山", "富山"),
   show_legend = TRUE,
   output_file = "man/figures/multiple_routes.png",
+  width = 10,
+  height = 7,
   dpi = 300
 )
 #> 
@@ -286,6 +292,8 @@ plot_railway_segments(
   key_stations = c("京都", "敦賀", "福井", "金沢", "富山", "糸魚川", "直江津"),
   show_legend = TRUE,
   output_file = "man/figures/hokuriku_line.png",
+  width = 10,
+  height = 7,
   dpi = 300
 )
 #> 
