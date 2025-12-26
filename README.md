@@ -273,7 +273,7 @@ When visualizing a long route that spans multiple operators, you can
 approximate the route by specifying intermediate stops using the `via`
 argument.
 
-For example, back in 2007 I took a train from 京都 to 新潟 via the
+For example, back in 2008 I took local trains from 京都 to 新潟 via the
 北陸本線, which was solely operated by JR at the time. Visualizing this
 route is tricky because it is now operated by multiple third-party
 companies.

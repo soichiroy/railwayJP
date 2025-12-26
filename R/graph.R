@@ -525,6 +525,25 @@ get_route_sections <- function(
     all_path_sections
   )
 
+  # Ensure start and end stations are included (they may be slightly outside
+  # the distance threshold used by get_stations_along_path)
+  start_sta <- use_stations[use_stations$N02_005 == from_station, ]
+  end_sta <- use_stations[use_stations$N02_005 == to_station, ]
+
+  if (nrow(start_sta) > 0 && !is.null(filtered_stations)) {
+    if (!(from_station %in% filtered_stations$N02_005)) {
+      # Add first matching start station entry
+      filtered_stations <- rbind(start_sta[1, ], filtered_stations)
+    }
+  }
+
+  if (nrow(end_sta) > 0 && !is.null(filtered_stations)) {
+    if (!(to_station %in% filtered_stations$N02_005)) {
+      # Add first matching end station entry
+      filtered_stations <- rbind(filtered_stations, end_sta[1, ])
+    }
+  }
+
   # Order stations along the path (approximately by distance from start)
   if (!is.null(filtered_stations) && nrow(filtered_stations) > 0) {
     start_sta <- use_stations[use_stations$N02_005 == from_station, ]
