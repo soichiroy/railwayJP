@@ -227,6 +227,8 @@ plot_railway_segments <- function(
   if (length(tokyo_idx) > 0) {
     pref_centroids$lon[tokyo_idx] <- 139.4
     pref_centroids$lat[tokyo_idx] <- 35.7
+    # Also update the geometry so geom_sf_text positions correctly
+    sf::st_geometry(pref_centroids)[tokyo_idx] <- sf::st_point(c(139.4, 35.7))
   }
 
   pref_centroids <- pref_centroids[
