@@ -220,6 +220,15 @@ plot_railway_segments <- function(
   pref_coords <- sf::st_coordinates(pref_centroids)
   pref_centroids$lon <- pref_coords[, 1]
   pref_centroids$lat <- pref_coords[, 2]
+
+  # Manual override for prefectures with islands that skew the centroid
+  # Tokyo: centroid falls in Tokyo Bay due to Izu/Ogasawara islands
+  tokyo_idx <- which(pref_centroids$name_ja == "\u6771\u4eac\u90fd")
+  if (length(tokyo_idx) > 0) {
+    pref_centroids$lon[tokyo_idx] <- 139.4
+    pref_centroids$lat[tokyo_idx] <- 35.7
+  }
+
   pref_centroids <- pref_centroids[
     pref_centroids$lon >= xlim[1] &
     pref_centroids$lon <= xlim[2] &
